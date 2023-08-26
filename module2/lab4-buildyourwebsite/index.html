@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .left-container{
+                background-color: rgb(4, 18, 54);
+                padding: 10px;
+                flex: 30%;
+                color: whitesmoke;
+            }
+            .left-container h3,h5{
+                text-align: center;
+            }
+
+            .right-container{
+                background-color: rgb(240, 239, 239);
+                padding: 10px;
+                flex: 70%;
+            }
+
+            .image{
+                /* border: 1px black solid; */
+                display: flex;
+                justify-content: center;
+            }
+
+            img{
+                /* border: 1px black solid; */
+                width: 200px;
+                border-radius: 50%;
+            }
+            
+
+            .left-headers{
+               
+                background-color:  rgb(240, 239, 239);
+                font-size: medium;
+                color: black;
+                padding-left: 10px;
+            }
+
+            a {
+                color: whitesmoke;
+                text-decoration: none;
+            }
+
+            .skills-table{
+                /* border: 1px black solid; */
+                width: 100%;
+                margin: 5px;
+                
+            }
+
+            .right-container{
+                color: rgb(123, 123, 123);
+            }
+            
+            .right-container h4{
+                color: rgb(72, 187, 233);
+            }
+            .right-container h3{
+                color: rgb(74, 74, 74)
+            }
+
+            footer div{
+                background-color: rgb(103, 107, 152);
+                margin-top: 5px;
+                padding: 10px;
+                width: 100%;
+                text-align: center;
+                font-size: medium;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="left-container">
+                
+                <div class="image"><img src="/module2/lab4-buildyourwebsite/Avatar.png"></div>
+                <h3>Bhavik Yakkarnall</h3>
+                <h5>Web Developer</h5>
+                
+                <div class="left-headers"><h4>Personal Info</h4></div>
+                <h4>Phone:</h4>
+                <a href="tel:+64210583820">+64210583820</a>
+                <h4>Email:</h4>
+                <a href="mailto:bhavikyakkarnall@gmail.com">bhavikyakkarnall@gmail.com</a>
+                
+                <div class="left-headers"><h4>Skills</h4></div>
+                <table class="skills-table">
+                    <tr>
+                        <td>HTML</td>
+                        <td>Intermediate</td>
+                    </tr>
+                    <tr>
+                        <td>CSS</td>
+                        <td>Intermediate</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>Intermediate</td>
+                    </tr>
+                </table>
+            </div>
+    
+            <div class="right-container">
+                <div id="experince">
+                    <h3>Experience</h3>
+                    <div id="experience1">
+                        <h4>Web Developer</h4>
+                        <p>AwesomeCo, December 2021 - Current</p>
+                        <ul>
+                            <li>Creating beautiful websites using HTML and CSS</li>
+                            <li>Following best accessibility principles</li>
+                            <li>Solving problems and proposing smooth, working solution</li>
+                        </ul>
+                    </div>
+                    <div id="experience2">
+                        <h4>Front-End Developer</h4>
+                        <p>BuildCo, January 2019 - June 2021</p>
+                        <ul>
+                            <li>Creating beautiful websites using HTML and CSS</li>
+                            <li>Following best accessibility principles</li>
+                            <li>Solving problems and proposing smooth, working solution</li>
+                        </ul>
+                    </div>
+                </div>
+    
+    
+                <div id="education">
+                    <h3>Education</h3>
+                    <h4>Institute of Data Web Development Course</h4>
+                    <p>Institute of Data, September 2021 - 2021</p>
+                    <ol>
+                        <li>Web Development</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                    </ol>
+        
+                    <h4>Software Development</h4>
+                    <p>Institute of Auckland, September 2021 - 2021</p>
+                    <ol>
+                        <li>Web Development</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                    </ol>
+                </div>
+                
+                
+    
+            </div>
+        </div>
+        <footer>
+            <div>Created by Bhavik Yakkarnall, 2023</div>
+        </footer>
+    </body>
+</html>
+

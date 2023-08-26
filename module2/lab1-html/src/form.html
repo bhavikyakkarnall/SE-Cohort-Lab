@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <!-- works like <a href="/index.html">Home</a> -->
+        <a href="index.html">Home</a>
+      </nav>
+    </header>
+    <main>
+      <form method="post" action="http://127.0.0.1:5500/module2/lab1-html/src/profile.html">
+        <div>
+          <lable>First Name </lable>
+          <input type="text" id="firstName">
+        </div>
+        <div>
+          <lable>Last Name </lable>
+          <input type="text" id="lastName">
+        </div>
+        <div>
+          <h5>'Radio' tag</h5>
+          <input type="radio" id="radioTag1" name="radioTag" value="Item 1">
+          <label>Item 1</label>
+          <br>
+          <input type="radio" id="radioTag2" name="radioTag" value="Item 2">
+          <label>Item 2</label>
+        </div>
+
+        <div>
+          <h5>'Checkbox' tag</h5>
+          <input type="checkbox" id="checkbox1" name="checkbox1" value="Item 1">
+          <label>Item 1</label>
+          <br>
+          <input type="checkbox" id="checkbox2" name="checkbox2" value="Item 2">
+          <label>Item 2</label>
+        </div>
+
+        <div>
+          <h5>'Select' tag</h5>
+          <label>Choose a car:</label>
+          <select name="cars" id="cars">
+            <option value="volvo">Volvo</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
+        
+      </form>
+    </main>
+    <footer>Copyright 2021 &copy;</footer>
+  </body>
+</html>

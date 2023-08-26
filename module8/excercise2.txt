@@ -1,0 +1,63 @@
+mongosh
+
+use bloggingApp
+
+db.createCollection("users")
+
+
+db.users.insertOne({"user_id": 1, "username": "user1", "email": "user1@test.com", "password": "User1@1234", "profile_photo": "https://user1-profile-photo.com"})
+db.users.insertOne({"user_id": 2, "username": "user2", "email": "user2@test.com", "password": "User2@1234", "profile_photo": "https://user2-profile-photo.com"})
+db.users.insertOne({"user_id": 3, "username": "user3", "email": "user3@test.com", "password": "User3@1234", "profile_photo": "https://user3-profile-photo.com"})
+db.users.insertOne({"user_id": 4, "username": "user4", "email": "user4@test.com", "password": "User4@1234", "profile_photo": "https://user4-profile-photo.com"})
+db.users.insertOne({"user_id": 5, "username": "user5", "email": "user5@test.com", "password": "User5@1234", "profile_photo": "https://user5-profile-photo.com"})
+
+db.users.find()
+db.users.find({user_id: 5})
+
+db.users.updateOne({user_id:5},{$set:{username: "newUser5"}})
+db.users.find({user_id: 5})
+
+db.users.deleteOne({user_id:3})
+db.users.find()
+
+
+------------------------------------------------------------------------------------------
+
+db.createCollection("posts")
+
+db.posts.insertOne({"post_id":10001,"user_id":"1","title":"The Future of AI: How Machine Learning is Changing Industries","description":"Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.","image_url":"https://post1-The-Future-Of-AI-Image.com","like":0})
+db.posts.insertOne({"post_id":10002,"user_id":"2","title":"DIY Home Improvement: Transforming Your Space on a Budget","description":"Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.","image_url":"https://post2-DIY-Home-Improvement-Image.com","like":0})
+db.posts.insertOne({"post_id":10003,"user_id":"1","title":"The Power of Storytelling in Marketing: Engage, Persuade, Succeed","description":"Explore the role of storytelling in marketing and how it can help businesses connect with their audience and drive sales.","image_url":"https://post3-The-Power-of-Storytelling-in-Marketing-Image.com","like":0})
+db.posts.insertOne({"post_id":10004,"user_id":"4","title":"Exploring Hidden Gems: Off-the-Beaten-Path Travel Destinations","description":"Uncover lesser-known travel destinations that offer unique experiences and a break from overcrowded tourist spots.","image_url":"https://post4-xploring-Hidden-Gems-Image.com","like":0})
+db.posts.insertOne({"post_id":10005,"user_id":"5","title":"Starting a Side Hustle: Turning Your Passion into Profit","description":"Learn how to identify your passion, monetize it, and successfully manage a side hustle alongside your day job.","image_url":"https://post5-Starting-a-Side-Hustle-Image.com","like":0})
+
+
+db.posts.find()
+db.posts.find({post_id: 10003})
+
+db.posts.updateOne({post_id:10005},{$set:{like:10}})
+db.posts.find({post_id: 10005})
+
+db.posts.deleteOne({post_id:10002})
+db.posts.find()
+
+
+-----------------------------------------------------------------------------------------------------
+
+db.createCollection("comments")
+
+db.comments.insertOne({"comments_id":50001, "post_id":102, "user_id":2, "comments":'Awesome'})
+db.comments.insertOne({"comments_id":50002, "post_id":102, "user_id":3, "comments":'Loved this'})
+db.comments.insertOne({"comments_id":50003, "post_id":103, "user_id":1, "comments":'Very accurate'})
+db.comments.insertOne({"comments_id":50004, "post_id":101, "user_id":5, "comments":'What a nice blog!'})
+db.comments.insertOne({"comments_id":50005, "post_id":105, "user_id":2, "comments":'Nice!'})
+
+
+db.comments.find()
+db.comments.find({comments_id: 50003})
+
+db.comments.updateOne({comments_id:50005},{$set:{comments:"Post more blogs like this."}})
+db.comments.find({comments_id: 50005})
+
+db.comments.deleteOne({comments_id:50002})
+db.comments.find()

@@ -1,0 +1,477 @@
+Last login: Sat Aug 26 14:41:29 on ttys000
+bhavikyakkarnall@Bhaviks-Desktop ~ % mongosh
+Current Mongosh Log ID:	64e96c1ecdf62a86403913e0
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6
+Using MongoDB:		7.0.0
+Using Mongosh:		1.10.6
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-08-26T09:35:25.025+12:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use bloggingApp
+switched to db bloggingApp
+bloggingApp> db.createCollection("users")
+{ ok: 1 }
+bloggingApp> db.users.insertOne({"user_id": 1, "username": "user1", "email": "user1@test.com", "password": "User1@1234", "profile_photo": "https://user1-profile-photo.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96c30cdf62a86403913e1")
+}
+bloggingApp> db.users.insertOne({"user_id": 2, "username": "user2", "email": "user2@test.com", "password": "User2@1234", "profile_photo": "https://user2-profile-photo.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96c30cdf62a86403913e2")
+}
+bloggingApp> db.users.insertOne({"user_id": 3, "username": "user3", "email": "user3@test.com", "password": "User3@1234", "profile_photo": "https://user3-profile-photo.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96c30cdf62a86403913e3")
+}
+bloggingApp> db.users.insertOne({"user_id": 4, "username": "user4", "email": "user4@test.com", "password": "User4@1234", "profile_photo": "https://user4-profile-photo.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96c30cdf62a86403913e4")
+}
+bloggingApp> db.users.insertOne({"user_id": 5, "username": "user5", "email": "user5@test.com", "password": "User5@1234", "profile_photo": "https://user5-profile-photo.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96c31cdf62a86403913e5")
+}
+bloggingApp> db.users.find()
+[
+  {
+    _id: ObjectId("64e96c30cdf62a86403913e1"),
+    user_id: 1,
+    username: 'user1',
+    email: 'user1@test.com',
+    password: 'User1@1234',
+    profile_photo: 'https://user1-profile-photo.com'
+  },
+  {
+    _id: ObjectId("64e96c30cdf62a86403913e2"),
+    user_id: 2,
+    username: 'user2',
+    email: 'user2@test.com',
+    password: 'User2@1234',
+    profile_photo: 'https://user2-profile-photo.com'
+  },
+  {
+    _id: ObjectId("64e96c30cdf62a86403913e3"),
+    user_id: 3,
+    username: 'user3',
+    email: 'user3@test.com',
+    password: 'User3@1234',
+    profile_photo: 'https://user3-profile-photo.com'
+  },
+  {
+    _id: ObjectId("64e96c30cdf62a86403913e4"),
+    user_id: 4,
+    username: 'user4',
+    email: 'user4@test.com',
+    password: 'User4@1234',
+    profile_photo: 'https://user4-profile-photo.com'
+  },
+  {
+    _id: ObjectId("64e96c31cdf62a86403913e5"),
+    user_id: 5,
+    username: 'user5',
+    email: 'user5@test.com',
+    password: 'User5@1234',
+    profile_photo: 'https://user5-profile-photo.com'
+  }
+]
+bloggingApp> db.users.find({user_id: 5})
+[
+  {
+    _id: ObjectId("64e96c31cdf62a86403913e5"),
+    user_id: 5,
+    username: 'user5',
+    email: 'user5@test.com',
+    password: 'User5@1234',
+    profile_photo: 'https://user5-profile-photo.com'
+  }
+]
+bloggingApp> db.users.updateOne({user_id:5},{$set:{username: "newUser5"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+bloggingApp> db.users.find({user_id: 5})
+[
+  {
+    _id: ObjectId("64e96c31cdf62a86403913e5"),
+    user_id: 5,
+    username: 'newUser5',
+    email: 'user5@test.com',
+    password: 'User5@1234',
+    profile_photo: 'https://user5-profile-photo.com'
+  }
+]
+bloggingApp> db.users.deleteOne({user_id:3})
+{ acknowledged: true, deletedCount: 1 }
+bloggingApp> db.users.find()
+[
+  {
+    _id: ObjectId("64e96c30cdf62a86403913e1"),
+    user_id: 1,
+    username: 'user1',
+    email: 'user1@test.com',
+    password: 'User1@1234',
+    profile_photo: 'https://user1-profile-photo.com'
+  },
+  {
+    _id: ObjectId("64e96c30cdf62a86403913e2"),
+    user_id: 2,
+    username: 'user2',
+    email: 'user2@test.com',
+    password: 'User2@1234',
+    profile_photo: 'https://user2-profile-photo.com'
+  },
+  {
+    _id: ObjectId("64e96c30cdf62a86403913e4"),
+    user_id: 4,
+    username: 'user4',
+    email: 'user4@test.com',
+    password: 'User4@1234',
+    profile_photo: 'https://user4-profile-photo.com'
+  },
+  {
+    _id: ObjectId("64e96c31cdf62a86403913e5"),
+    user_id: 5,
+    username: 'newUser5',
+    email: 'user5@test.com',
+    password: 'User5@1234',
+    profile_photo: 'https://user5-profile-photo.com'
+  }
+]
+bloggingApp> db.createCollection("posts")
+{ ok: 1 }
+bloggingApp> db.posts.insertOne({"post_id":10001,"user_id":"1","title":"The Future of AI: How Machine Learning is Changing Industries","description":"Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.","image_url":"https://post1-The-Future-Of-AI-Image.com","like":0})
+ling-in-Marketing-Image.com","like":0})
+db.posts.insertOne({"post_id":10004,"user_id":"4","title":"Exploring Hidden Gems: Off-the-Beaten-Path Travel Destinations","description":"Uncover lesser-known travel destinations that offer unique experiences and a break from overcrowded tourist spots.","image_url":"https://post4-xploring-Hidden-Gems-Image.com","like":0})
+db.posts.insertOne({"post_id":10005,"user_id":"5","title":"Starting a Side Hustle: Turning Your Passion into Profit","description":"Learn how to identify your passion, monetize it, and successfully manage a side hustle alongside your day job.","image_url":"https://post5-Starting-a-Side-Hustle-Image.com","like":0}){
+  acknowledged: true,
+  insertedId: ObjectId("64e96c85cdf62a86403913e6")
+}
+bloggingApp> db.posts.insertOne({"post_id":10002,"user_id":"2","title":"DIY Home Improvement: Transforming Your Space on a Budget","description":"Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.","image_url":"https://post2-DIY-Home-Improvement-Image.com","like":0})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96c85cdf62a86403913e7")
+}
+bloggingApp> db.posts.insertOne({"post_id":10003,"user_id":"1","title":"The Power of Storytelling in Marketing: Engage, Persuade, Succeed","description":"Explore the role of storytelling in marketing and how it can help businesses connect with their audience and drive sales.","image_url":"https://post3-The-Power-of-Storytelling-in-Marketing-Image.com","like":0})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96c85cdf62a86403913e8")
+}
+bloggingApp> db.posts.insertOne({"post_id":10004,"user_id":"4","title":"Exploring Hidden Gems: Off-the-Beaten-Path Travel Destinations","description":"Uncover lesser-known travel destinations that offer unique experiences and a break from overcrowded tourist spots.","image_url":"https://post4-xploring-Hidden-Gems-Image.com","like":0})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96c85cdf62a86403913e9")
+}
+bloggingApp> db.posts.insertOne({"post_id":10005,"user_id":"5","title":"Starting a Side Hustle: Turning Your Passion into Profit","description":"Learn how to identify your passion, monetize it, and successfully manage a side hustle alongside your day job.","image_url":"https://post5-Starting-a-Side-Hustle-Image.com","like":0})db.posts.find()
+Uncaught:
+SyntaxError: Missing semicolon. (1:315)
+
+> 1 | db.posts.insertOne({"post_id":10005,"user_id":"5","title":"Starting a Side Hustle: Turning Your Passion into Profit","description":"Learn how to identify your passion, monetize it, and successfully manage a side hustle alongside your day job.","image_url":"https://post5-Starting-a-Side-Hustle-Image.com","like":0})db.posts.find()
+    |                                                                                                                                                                                                                                                                                                                            ^
+  2 |
+
+bloggingApp> db.posts.find()
+[
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e6"),
+    post_id: 10001,
+    user_id: '1',
+    title: 'The Future of AI: How Machine Learning is Changing Industries',
+    description: 'Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.',
+    image_url: 'https://post1-The-Future-Of-AI-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e7"),
+    post_id: 10002,
+    user_id: '2',
+    title: 'DIY Home Improvement: Transforming Your Space on a Budget',
+    description: 'Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.',
+    image_url: 'https://post2-DIY-Home-Improvement-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e8"),
+    post_id: 10003,
+    user_id: '1',
+    title: 'The Power of Storytelling in Marketing: Engage, Persuade, Succeed',
+    description: 'Explore the role of storytelling in marketing and how it can help businesses connect with their audience and drive sales.',
+    image_url: 'https://post3-The-Power-of-Storytelling-in-Marketing-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e9"),
+    post_id: 10004,
+    user_id: '4',
+    title: 'Exploring Hidden Gems: Off-the-Beaten-Path Travel Destinations',
+    description: 'Uncover lesser-known travel destinations that offer unique experiences and a break from overcrowded tourist spots.',
+    image_url: 'https://post4-xploring-Hidden-Gems-Image.com',
+    like: 0
+  }
+]
+bloggingApp> db.posts.insertOne({"post_id":10005,"user_id":"5","title":"Starting a Side Hustle: Turning Your Passion into Profit","description":"Learn how to identify your passion, monetize it, and successfully manage a side hustle alongside your day job.","image_url":"https://post5-Starting-a-Side-Hustle-Image.com","like":0})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96ca8cdf62a86403913ea")
+}
+bloggingApp> db.posts.find()
+[
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e6"),
+    post_id: 10001,
+    user_id: '1',
+    title: 'The Future of AI: How Machine Learning is Changing Industries',
+    description: 'Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.',
+    image_url: 'https://post1-The-Future-Of-AI-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e7"),
+    post_id: 10002,
+    user_id: '2',
+    title: 'DIY Home Improvement: Transforming Your Space on a Budget',
+    description: 'Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.',
+    image_url: 'https://post2-DIY-Home-Improvement-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e8"),
+    post_id: 10003,
+    user_id: '1',
+    title: 'The Power of Storytelling in Marketing: Engage, Persuade, Succeed',
+    description: 'Explore the role of storytelling in marketing and how it can help businesses connect with their audience and drive sales.',
+    image_url: 'https://post3-The-Power-of-Storytelling-in-Marketing-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e9"),
+    post_id: 10004,
+    user_id: '4',
+    title: 'Exploring Hidden Gems: Off-the-Beaten-Path Travel Destinations',
+    description: 'Uncover lesser-known travel destinations that offer unique experiences and a break from overcrowded tourist spots.',
+    image_url: 'https://post4-xploring-Hidden-Gems-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96ca8cdf62a86403913ea"),
+    post_id: 10005,
+    user_id: '5',
+    title: 'Starting a Side Hustle: Turning Your Passion into Profit',
+    description: 'Learn how to identify your passion, monetize it, and successfully manage a side hustle alongside your day job.',
+    image_url: 'https://post5-Starting-a-Side-Hustle-Image.com',
+    like: 0
+  }
+]
+bloggingApp> db.posts.find({post_id: 10003})
+[
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e8"),
+    post_id: 10003,
+    user_id: '1',
+    title: 'The Power of Storytelling in Marketing: Engage, Persuade, Succeed',
+    description: 'Explore the role of storytelling in marketing and how it can help businesses connect with their audience and drive sales.',
+    image_url: 'https://post3-The-Power-of-Storytelling-in-Marketing-Image.com',
+    like: 0
+  }
+]
+bloggingApp> db.posts.updateOne({post_id:10005},{$set:{like:10}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+bloggingApp> db.posts.find({post_id: 10005})
+[
+  {
+    _id: ObjectId("64e96ca8cdf62a86403913ea"),
+    post_id: 10005,
+    user_id: '5',
+    title: 'Starting a Side Hustle: Turning Your Passion into Profit',
+    description: 'Learn how to identify your passion, monetize it, and successfully manage a side hustle alongside your day job.',
+    image_url: 'https://post5-Starting-a-Side-Hustle-Image.com',
+    like: 10
+  }
+]
+bloggingApp> db.posts.deleteOne({post_id:10002})
+{ acknowledged: true, deletedCount: 1 }
+bloggingApp> db.posts.find()
+[
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e6"),
+    post_id: 10001,
+    user_id: '1',
+    title: 'The Future of AI: How Machine Learning is Changing Industries',
+    description: 'Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.',
+    image_url: 'https://post1-The-Future-Of-AI-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e8"),
+    post_id: 10003,
+    user_id: '1',
+    title: 'The Power of Storytelling in Marketing: Engage, Persuade, Succeed',
+    description: 'Explore the role of storytelling in marketing and how it can help businesses connect with their audience and drive sales.',
+    image_url: 'https://post3-The-Power-of-Storytelling-in-Marketing-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96c85cdf62a86403913e9"),
+    post_id: 10004,
+    user_id: '4',
+    title: 'Exploring Hidden Gems: Off-the-Beaten-Path Travel Destinations',
+    description: 'Uncover lesser-known travel destinations that offer unique experiences and a break from overcrowded tourist spots.',
+    image_url: 'https://post4-xploring-Hidden-Gems-Image.com',
+    like: 0
+  },
+  {
+    _id: ObjectId("64e96ca8cdf62a86403913ea"),
+    post_id: 10005,
+    user_id: '5',
+    title: 'Starting a Side Hustle: Turning Your Passion into Profit',
+    description: 'Learn how to identify your passion, monetize it, and successfully manage a side hustle alongside your day job.',
+    image_url: 'https://post5-Starting-a-Side-Hustle-Image.com',
+    like: 10
+  }
+]
+bloggingApp> db.createCollection("comments")
+{ ok: 1 }
+bloggingApp> db.comments.insertOne({"comments_id":50001, "post_id":102, "user_id":2, "comments":'Awesome'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96cd0cdf62a86403913eb")
+}
+bloggingApp> db.comments.insertOne({"comments_id":50002, "post_id":102, "user_id":3, "comments":'Loved this'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96cd0cdf62a86403913ec")
+}
+bloggingApp> db.comments.insertOne({"comments_id":50003, "post_id":103, "user_id":1, "comments":'Very accurate'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96cd0cdf62a86403913ed")
+}
+bloggingApp> db.comments.insertOne({"comments_id":50004, "post_id":101, "user_id":5, "comments":'What a nice blog!'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96cd0cdf62a86403913ee")
+}
+bloggingApp> db.comments.insertOne({"comments_id":50005, "post_id":105, "user_id":2, "comments":'Nice!'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e96cd0cdf62a86403913ef")
+}
+bloggingApp> db.comments.find()
+[
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913eb"),
+    comments_id: 50001,
+    post_id: 102,
+    user_id: 2,
+    comments: 'Awesome'
+  },
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913ec"),
+    comments_id: 50002,
+    post_id: 102,
+    user_id: 3,
+    comments: 'Loved this'
+  },
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913ed"),
+    comments_id: 50003,
+    post_id: 103,
+    user_id: 1,
+    comments: 'Very accurate'
+  },
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913ee"),
+    comments_id: 50004,
+    post_id: 101,
+    user_id: 5,
+    comments: 'What a nice blog!'
+  },
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913ef"),
+    comments_id: 50005,
+    post_id: 105,
+    user_id: 2,
+    comments: 'Nice!'
+  }
+]
+bloggingApp> db.comments.find({comments_id: 50003})
+[
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913ed"),
+    comments_id: 50003,
+    post_id: 103,
+    user_id: 1,
+    comments: 'Very accurate'
+  }
+]
+bloggingApp> db.comments.updateOne({comments_id:50005},{$set:{comments:"Post more blogs like this."}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+bloggingApp> db.comments.find({comments_id: 50005})
+[
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913ef"),
+    comments_id: 50005,
+    post_id: 105,
+    user_id: 2,
+    comments: 'Post more blogs like this.'
+  }
+]
+bloggingApp> db.comments.deleteOne({comments_id:50002})
+{ acknowledged: true, deletedCount: 1 }
+bloggingApp> db.comments.find()
+[
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913eb"),
+    comments_id: 50001,
+    post_id: 102,
+    user_id: 2,
+    comments: 'Awesome'
+  },
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913ed"),
+    comments_id: 50003,
+    post_id: 103,
+    user_id: 1,
+    comments: 'Very accurate'
+  },
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913ee"),
+    comments_id: 50004,
+    post_id: 101,
+    user_id: 5,
+    comments: 'What a nice blog!'
+  },
+  {
+    _id: ObjectId("64e96cd0cdf62a86403913ef"),
+    comments_id: 50005,
+    post_id: 105,
+    user_id: 2,
+    comments: 'Post more blogs like this.'
+  }
+]
+bloggingApp> 

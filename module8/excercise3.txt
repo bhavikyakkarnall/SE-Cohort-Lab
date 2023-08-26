@@ -1,0 +1,135 @@
+mysql -uroot -p
+
+show databases;
+
+CREATE DATABASE bloggingApp;
+
+show databases;
+
+USE bloggingApp;
+
+CREATE TABLE users( 
+user_id INT NOT NULL, 
+username VARCHAR(100) NOT NULL, 
+email VARCHAR(100) NOT NULL, 
+password VARCHAR(200) NOT NULL, 
+profile_photo VARCHAR(300) NOT NULL, 
+PRIMARY KEY(user_id)
+);
+
+INSERT INTO users( user_id,username,email,password,profile_photo) 
+VALUES (1, "user1", "user1@test.com", "User1@1234", "https://user1-profile-photo.com");
+
+INSERT INTO users( user_id,username,email,password,profile_photo) 
+VALUES (2, "user2", "user2@test.com", "User2@1234", "https://user2-profile-photo.com");
+
+INSERT INTO users( user_id,username,email,password,profile_photo) 
+VALUES (3, "user3", "user3@test.com", "User3@1234", "https://user3-profile-photo.com");
+
+INSERT INTO users( user_id,username,email,password,profile_photo) 
+VALUES (4, "user4", "user4@test.com", "User4@1234", "https://user4-profile-photo.com");
+
+INSERT INTO users( user_id,username,email,password,profile_photo) 
+VALUES (5, "user5", "user5@test.com", "User5@1234", "https://user5-profile-photo.com");
+
+
+SELECT * FROM users WHERE user_id=3;
+SELECT * FROM users;
+
+UPDATE users SET profile_photo='https://user5-new-profile-photo.com' WHERE user_id=5;
+
+DELETE FROM users WHERE user_id=4;
+
+
+CREATE TABLE posts( 
+post_id INT NOT NULL, 
+user_id INT NOT NULL, 
+title VARCHAR(200) NOT NULL, 
+description VARCHAR(1000) NOT NULL, 
+image_url VARCHAR(300) NOT NULL, 
+PRIMARY KEY(post_id), 
+FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+
+INSERT INTO posts( post_id, user_id, title, description, image_url) 
+VALUES( 101, 1, "The Future of AI: How Machine Learning is Changing Industries", "Dive into the world of artificial intelligence and explore the impact of machine learning across sectors like healthcare, finance, and transportation.", "https://post1-The-Future-Of-AI-Image.com");
+
+INSERT INTO posts( post_id, user_id, title, description, image_url) 
+VALUES( 102, 2, "DIY Home Improvement: Transforming Your Space on a Budget", "Get inspired to revamp your living space with budget-friendly DIY home improvement projects and decorating tips.", "https://post2-DIY-Home-Improvement-Image.com");
+INSERT INTO posts( post_id, user_id, title, description, image_url) 
+VALUES( 103, 1, "The Power of Storytelling in Marketing: Engage, Persuade, Succeed", "Explore the role of storytelling in marketing and how it can help businesses connect with their audience and drive sales.", "https://post3-The-Power-of-Storytelling-in-Marketing-Image.com");
+INSERT INTO posts( post_id, user_id, title, description, image_url) 
+VALUES( 104, 3, "Exploring Hidden Gems: Off-the-Beaten-Path Travel Destinations", "Uncover lesser-known travel destinations that offer unique experiences and a break from overcrowded tourist spots.", "https://post4-xploring-Hidden-Gems-Image.com");
+INSERT INTO posts( post_id, user_id, title, description, image_url) 
+VALUES( 105, 5, "Starting a Side Hustle: Turning Your Passion into Profit", "Learn how to identify your passion, monetize it, and successfully manage a side hustle alongside your day job.", "https://post5-Starting-a-Side-Hustle-Image.com");
+
+SELECT * FROM posts WHERE post_id=105;
+SELECT * FROM posts;
+
+UPDATE posts SET image_url='https://post3-The-Power-of-Storytelling-in-Marketing-New-Image.com' WHERE post_id=103;
+
+DELETE FROM posts WHERE post_id=104;
+
+CREATE TABLE likes( 
+like_id INT NOT NULL,
+post_id INT NOT NULL, 
+user_id INT NOT NULL, 
+PRIMARY KEY(like_id), 
+FOREIGN KEY(user_id) REFERENCES users(user_id),
+FOREIGN KEY(post_id) REFERENCES posts(post_id)
+);
+
+INSERT INTO likes(like_id,post_id, user_id)
+VALUES (80001, 105, 5);
+
+INSERT INTO likes(like_id,post_id, user_id)
+VALUES (80002, 103, 3);
+
+INSERT INTO likes(like_id,post_id, user_id)
+VALUES (80003, 105, 2);
+
+INSERT INTO likes(like_id,post_id, user_id)
+VALUES (80004, 103, 1);
+
+INSERT INTO likes(like_id,post_id, user_id)
+VALUES (80005, 101, 2);
+
+SELECT * FROM likes WHERE like_id=80001;
+SELECT * FROM likes;
+
+UPDATE likes SET post_id=102 WHERE like_id=80004;
+
+DELETE FROM likes WHERE like_id=80005;
+
+
+CREATE TABLE comments( 
+comment_id INT NOT NULL,
+post_id INT NOT NULL, 
+user_id INT NOT NULL,
+comment VARCHAR(1000) NOT NULL, 
+PRIMARY KEY(comment_id), 
+FOREIGN KEY(user_id) REFERENCES users(user_id),
+FOREIGN KEY(post_id) REFERENCES posts(post_id)
+);
+
+INSERT INTO comments(comment_id,post_id, user_id,comment) 
+VALUES (50001, 102, 2, 'Awesome');
+
+INSERT INTO comments(comment_id,post_id, user_id,comment) 
+VALUES (50002, 102, 3, 'Loved this');
+
+INSERT INTO comments(comment_id,post_id, user_id,comment) 
+VALUES (50003, 103, 1, 'Very accurate');
+
+INSERT INTO comments(comment_id,post_id, user_id,comment) 
+VALUES (50004, 101, 5, 'What a nice blog!');
+
+INSERT INTO comments(comment_id,post_id, user_id,comment) 
+VALUES (50005, 105, 2, 'Nice!');
+
+SELECT * FROM comments WHERE comment_id=50003;
+SELECT * FROM comments;
+
+UPDATE comments SET comment='What a nice blog! Please post some more.' WHERE comment_id=50004;
+
+DELETE FROM comments WHERE comment_id=50002;

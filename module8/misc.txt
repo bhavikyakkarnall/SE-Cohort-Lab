@@ -1,0 +1,98 @@
+Last login: Sat Aug 26 09:32:24 on ttys000
+bhavikyakkarnall@Bhaviks-Desktop ~ % mongosh
+Current Mongosh Log ID:	64e932ff9344f861a9e18fb5
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6
+Using MongoDB:		7.0.0
+Using Mongosh:		1.10.6
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-08-26T09:35:25.025+12:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use BloggingApp
+switched to db BloggingApp
+BloggingApp> db.createCollection("users")
+{ ok: 1 }
+BloggingApp> db.createCollection("posts")
+{ ok: 1 }
+BloggingApp> db.createCollection("likes")
+{ ok: 1 }
+BloggingApp> db.createCollection("comments")
+{ ok: 1 }
+BloggingApp> db.users.insertOne({"user_id": 1, "username": "user20231", "email": "user@test.com", "password": "#asdf1234", "profile_photo": "https://url.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e934529344f861a9e18fb6")
+}
+BloggingApp> db.posts.insertOne({"post_id":20230801, "user_id": 1, "title": "New Post", "description": "We will be posting our new post soon", "image_url": "https://post-image.com"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e935769344f861a9e18fb7")
+}
+BloggingApp> db.likes.insertOne({"post_id": 20230801, "likes_id": 2023080101, "user_id": 1})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e9375d9344f861a9e18fb8")
+}
+BloggingApp> db.comments.insertOne({"post_id": 20230801, "comment_id": 20230801101, "user_id": 1, "comment": "Looking forward to the new post"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64e937d09344f861a9e18fb9")
+}
+BloggingApp> show collections
+comments
+likes
+posts
+users
+BloggingApp> db.users.find()
+[
+  {
+    _id: ObjectId("64e934529344f861a9e18fb6"),
+    user_id: 1,
+    username: 'user20231',
+    email: 'user@test.com',
+    password: '#asdf1234',
+    profile_photo: 'https://url.com'
+  }
+]
+BloggingApp> db.posts.find()
+[
+  {
+    _id: ObjectId("64e935769344f861a9e18fb7"),
+    post_id: 20230801,
+    user_id: 1,
+    title: 'New Post',
+    description: 'We will be posting our new post soon',
+    image_url: 'https://post-image.com'
+  }
+]
+BloggingApp> db.likes.find()
+[
+  {
+    _id: ObjectId("64e9375d9344f861a9e18fb8"),
+    post_id: 20230801,
+    likes_id: 2023080101,
+    user_id: 1
+  }
+]
+BloggingApp> db.comments.find()
+[
+  {
+    _id: ObjectId("64e937d09344f861a9e18fb9"),
+    post_id: 20230801,
+    comment_id: 20230801101,
+    user_id: 1,
+    comment: 'Looking forward to the new post'
+  }
+]
+BloggingApp> db.dropDatabase()
+{ ok: 1, dropped: 'BloggingApp' }
+BloggingApp> show databases
+admin   40.00 KiB
+config  72.00 KiB
+local   40.00 KiB
+BloggingApp> exit
+bhavikyakkarnall@Bhaviks-Desktop ~ % 
