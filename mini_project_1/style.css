@@ -1,0 +1,134 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(/bground.avif.jpg);
+}
+
+header {
+  text-align: center;
+  color: white;
+}
+
+
+/* Navigation */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+li a,
+.dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.navbar .search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .search-bar input[type="text"] {
+  padding: 5px;
+}
+
+
+
+/* Login Form */
+
+
+.container {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #0000008e;
+}
+
+.container h3 {
+  text-align: left;
+  color: white;
+}
+
+.container input[type="text"],
+.container input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.container input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.container input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.container label {
+  width: 100%;
+}
+
+.container .genderDD{
+  margin: 10px auto;
+}
+
+.container .register{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.container .disclaimer{
+  text-align: center;
+  color: white;
+}
